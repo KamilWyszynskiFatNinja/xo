@@ -185,6 +185,14 @@ func PgParseType(args *internal.ArgType, dt string, nullable bool) (int, string,
 		nilVal = "uuid.New()"
 		typ = "uuid.UUID"
 
+	case "citext":
+		nilVal = "string"
+		typ = "string"
+
+	case "email":
+		nilVal = "string"
+		typ = "string"
+
 	default:
 		if strings.HasPrefix(dt, args.Schema+".") {
 			// in the same schema, so chop off
