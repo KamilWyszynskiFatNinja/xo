@@ -182,8 +182,12 @@ func PgParseType(args *internal.ArgType, dt string, nullable bool) (int, string,
 		typ = "hstore.Hstore"
 
 	case "uuid":
-		nilVal = "uuid.New()"
+		nilVal = "uuid.Nil"
 		typ = "uuid.UUID"
+		if nullable {
+			nilVal = "uuid.NullUUID{}"
+			typ = "uuid.NullUUID"
+		}
 
 	case "citext":
 		nilVal = "string"
