@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 	"text/template"
@@ -379,6 +380,7 @@ func (a *ArgType) fieldnames(fields []*Field, prefix string, ignoreNames ...stri
 	str := ""
 	i := 0
 	for _, f := range fields {
+		fmt.Println(f.Type)
 		if ignore[f.Name] {
 			continue
 		}
