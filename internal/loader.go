@@ -511,7 +511,9 @@ func (tl TypeLoader) LoadColumns(args *ArgType, typeTpl *Type) error {
 	// process columns
 	for _, c := range columnList {
 		ignore := false
-
+		if c.DataType == "interval" {
+			ignore = true
+		}
 		for _, ignoreField := range args.IgnoreFields {
 			if ignoreField == c.ColumnName {
 				// Skip adding this field if user has specified they are not
